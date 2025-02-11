@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عربة التسوق</title>
+</head>
+<body>
+    <h1>عربة التسوق</h1>
+    <a href="{{ url_for('index') }}">العودة إلى المتجر</a>
+
+    <ul>
+        {% for item in cart %}
+        <li>
+            <img src="{{ item.image }}" alt="{{ item.name }}" width="100">
+            <strong>{{ item.name }}</strong> - {{ item.price }} IQD
+            <p>{{ item.description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('whatsapp_contact') }}">إتمام الشراء عبر واتساب</a>
+</body>
+</html>

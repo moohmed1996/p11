@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإدارة</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>إدارة المنتجات</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <input type="file" name="photo" required>
+        {{ form.label }}
+        {{ form.submit }}
+    </form>
+
+    <h2>المنتجات المضافة</h2>
+    <div class="gallery">
+        {% for product in products %}
+            <div class="product">
+                <img src="{{ url_for('static', filename='uploads/' + product.image) }}" width="200">
+                <p>{{ product.label }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
